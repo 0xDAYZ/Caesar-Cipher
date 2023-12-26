@@ -11,18 +11,18 @@ print(logo)
 process_active = True
 
 def crypt(message, shift_number, process_type):
-    if shift_number >= 26:
-        shift_number %= 26
+    # if shift_number >= 26:
+    #     shift_number %= 26
 
     if process_type == 'decode':
         shift_number = -shift_number
     
     new_message = []
     for letter in message:
-        if letter == ' ':
+        if letter not in alphabet:
             new_message.append(letter)
         else:
-            new_message.append(alphabet[alphabet.index(letter) + shift_number]) 
+            new_message.append(alphabet[(alphabet.index(letter) + shift_number) % 26]) 
     
     return ''.join(new_message)
 
